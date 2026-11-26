@@ -56,6 +56,25 @@
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- Services: covered cards shrink a little and dim ---------- */
+  const services = [...document.querySelectorAll('.service')];
+  function updateServices() {
+    services.forEach((card, i) => {
+      let depth = 0;
+      for (let k = i + 1; k < services.length; k++) {
+        const next = services[k];
+        const gap = next.getBoundingClientRect().top - card.getBoundingClientRect().top;
+        // 0 when the next card is a full card-height away, 1 once it sits on top
+        depth += Math.min(1, Math.max(0, 1 - (gap - 22 * (k - i)) / card.offsetHeight));
+      }
+      card.style.transform = reduce ? '' : `scale(${(1 - depth * 0.03).toFixed(4)})`;
+      card.classList.toggle('is-covered', depth > 0.6);
+    });
+  }
+  window.addEventListener('scroll', updateServices, { passive: true });
+  window.addEventListener('resize', updateServices);
+  updateServices();
+
   /* ---------- Social pills lean toward the cursor ---------- */
   const pills = [...document.querySelectorAll('.socials a')];
   if (!reduce) {
@@ -137,12 +156,14 @@
     l.classList.toggle('is-active', on);
     on ? l.setAttribute('aria-current', 'page') : l.removeAttribute('aria-current');
   });
-  ScrollTrigger.create({
-    trigger: works,
-    start: 'top 50%',
-    end: 'max',
-    onToggle: self => setActive(self.isActive ? '#works' : '#top'),
-  });
+  const sections = ['#top', '#works', '#services'].map(id => document.querySelector(id)).filter(Boolean);
+  const pickActive = () => {
+    let current = '#top';
+    sections.forEach(s => { if (s.getBoundingClientRect().top < innerHeight * 0.5) current = '#' + s.id; });
+    setActive(current);
+  };
+  ScrollTrigger.create({ start: 0, end: 'max', onUpdate: pickActive });
+  pickActive();
 
   gsap.ticker.add(updateCards);
   updateCards();
