@@ -159,6 +159,22 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 }
 .socials a:hover { background: var(--surface-hover); color: var(--text); }
 
+/* Floating pills: each one bobs on its own rhythm */
+.socials li {
+  animation: float var(--dur, 3.2s) ease-in-out var(--delay, 0s) infinite alternate;
+  will-change: transform;
+}
+.socials li:nth-child(5n+1) { --dur: 3.0s; --delay: -0.4s; --lift: -7px;  --tilt: -1.6deg; }
+.socials li:nth-child(5n+2) { --dur: 3.6s; --delay: -1.8s; --lift: -10px; --tilt: 1.4deg; }
+.socials li:nth-child(5n+3) { --dur: 2.8s; --delay: -1.1s; --lift: -6px;  --tilt: -1deg; }
+.socials li:nth-child(5n+4) { --dur: 3.4s; --delay: -2.4s; --lift: -9px;  --tilt: 1.8deg; }
+.socials li:nth-child(5n+5) { --dur: 3.1s; --delay: -0.9s; --lift: -8px;  --tilt: -1.3deg; }
+.socials li:hover { animation-play-state: paused; }
+@keyframes float {
+  from { transform: translateY(0) rotate(0deg); }
+  to   { transform: translateY(var(--lift, -8px)) rotate(var(--tilt, 1deg)); }
+}
+
 /* ---------- Works ---------- */
 .works {
   position: relative;
@@ -345,4 +361,5 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+  .socials li { animation: none; }
 }
