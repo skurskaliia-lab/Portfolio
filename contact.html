@@ -59,7 +59,11 @@
       </ul>
     </div>
 
-    <form class="form" id="form" action="#" method="post" novalidate>
+    <!-- FORM ENDPOINT: put your Formspree form id into the action below (e.g. https://formspree.io/f/abcdwxyz).
+         Until then the form opens the visitor's email app instead. -->
+    <form class="form" id="form" action="https://formspree.io/f/YOUR_FORM_ID" method="post" novalidate>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <input type="hidden" name="_subject" value="New enquiry from the portfolio site">
       <fieldset class="chips">
         <legend>What do you need?</legend>
         <label class="chip"><input type="radio" name="service" value="landing" checked><span>Landing page</span></label>
@@ -96,6 +100,7 @@
       </div>
 
       <button class="form__submit" type="submit">Send message <span aria-hidden="true">→</span></button>
+      <p class="form__error" role="alert" hidden>Something went wrong. Please try again or email me directly.</p>
       <p class="form__note">Or write directly to <a href="mailto:hello@example.com" class="cta" data-placeholder>hello@example.com</a></p>
 
       <div class="form__done" role="status" aria-live="polite">

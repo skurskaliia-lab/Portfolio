@@ -597,6 +597,8 @@ a.contact__value:hover { border-color: var(--text); }
 }
 .form__submit:hover { transform: translateY(-1px); }
 .form__note { font-size: 13px; color: var(--text-muted); }
+.form__error { font-size: 14px; color: #ff7a6b; }
+.form__submit:disabled { opacity: .6; cursor: progress; transform: none; }
 .form__done { display: none; text-align: left; }
 .form__done h2 { font-family: var(--font-display); font-size: 44px; text-transform: uppercase; line-height: 1; }
 .form__done p { margin-top: 12px; color: var(--text-soft); }
