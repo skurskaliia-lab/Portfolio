@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Your Name, Marketing Designer</title>
+  <meta name="description" content="Get in touch about a landing page, e-commerce, portfolio or marketing design project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Condensed:wght@700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!--
+    PLACEHOLDERS: everything marked with data-placeholder (email, socials,
+    location, response time) should be replaced with your own details.
+    The form does not send anywhere yet: connect it to a form service
+    (e.g. Formspree, Netlify Forms) by setting the form's action.
+  -->
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Main">
+      <a href="index.html#top" class="nav__link">Home</a>
+      <a href="index.html#works" class="nav__link">Works</a>
+      <a href="index.html#services" class="nav__link">Services</a>
+      <a href="#" class="nav__link">About</a>
+    </nav>
+    <a href="contact.html" class="nav__cta" aria-current="page">Contact</a>
+  </header>
+
+  <main class="contact">
+    <div class="contact__intro">
+      <h1 class="contact__title">Let's<br>talk</h1>
+      <p class="contact__lead">Tell me about your brand or product and what you need. I'll come back with questions, a rough plan and a timeline.</p>
+
+      <ul class="contact__list">
+        <li>
+          <span class="contact__label">Email</span>
+          <a href="mailto:hello@example.com" class="contact__value" data-placeholder>hello@example.com</a>
+        </li>
+        <li>
+          <span class="contact__label">Reply time</span>
+          <span class="contact__value" data-placeholder>Within a day</span>
+        </li>
+        <li>
+          <span class="contact__label">Based in</span>
+          <span class="contact__value" data-placeholder>Remote, worldwide</span>
+        </li>
+        <li>
+          <span class="contact__label">Elsewhere</span>
+          <div class="contact__socials" data-placeholder>
+            <a href="#">LinkedIn</a>
+            <a href="#">Dribbble</a>
+            <a href="#">Instagram</a>
+            <a href="#">Behance</a>
+            <a href="#">Telegram</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="form" id="form" action="#" method="post" novalidate>
+      <fieldset class="chips">
+        <legend>What do you need?</legend>
+        <label class="chip"><input type="radio" name="service" value="landing" checked><span>Landing page</span></label>
+        <label class="chip"><input type="radio" name="service" value="ecommerce"><span>E-commerce</span></label>
+        <label class="chip"><input type="radio" name="service" value="portfolio"><span>Portfolio site</span></label>
+        <label class="chip"><input type="radio" name="service" value="marketing"><span>Marketing design</span></label>
+      </fieldset>
+
+      <div class="form__row">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Doe" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@company.com" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-budget">Budget</label>
+        <select id="f-budget" name="budget" data-placeholder>
+          <option value="">Not sure yet</option>
+          <option>Under $1,000</option>
+          <option>$1,000 – $3,000</option>
+          <option>$3,000 – $6,000</option>
+          <option>$6,000+</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-msg">About the project</label>
+        <textarea id="f-msg" name="message" placeholder="What are you launching, who is it for, and when do you need it?" required></textarea>
+      </div>
+
+      <button class="form__submit" type="submit">Send message <span aria-hidden="true">→</span></button>
+      <p class="form__note">Or write directly to <a href="mailto:hello@example.com" class="cta" data-placeholder>hello@example.com</a></p>
+
+      <div class="form__done" role="status" aria-live="polite">
+        <h2>Thanks!</h2>
+        <p>Your message is on its way. I'll get back to you <span data-placeholder>within a day</span>.</p>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <span data-placeholder>Your Name</span></p>
+    <a href="index.html#top">Back to home ↑</a>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>
