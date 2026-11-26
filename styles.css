@@ -101,13 +101,6 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   line-height: 1;
   letter-spacing: -0.035em;
 }
-.hero__title-line {
-  flex: 0 1 120px;
-  min-width: 40px;
-  height: 2px;
-  margin-bottom: .14em;
-  background: var(--line);
-}
 
 .hero__bio { margin-top: 24px; max-width: 370px; font-size: 17px; font-weight: 500; line-height: 1.45; color: var(--text-soft); }
 
@@ -509,8 +502,7 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   .hero { padding-bottom: 32px; }
   .avatar { width: 96px; height: 96px; font-size: 32px; }
   .hero__title { font-size: clamp(34px, 10vw, 46px); }
-  .hero__title-line { display: none; }
-  .hero__bio, .hero__status { font-size: 16px; }
+    .hero__bio, .hero__status { font-size: 16px; }
   .socials { padding-top: 64px; gap: 8px; }
   .socials a { font-size: 15px; padding: 6px 11px; }
 
