@@ -50,7 +50,8 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   padding: 36px var(--gutter) 28px;
   background: linear-gradient(to bottom, var(--bg) 45%, rgba(11, 11, 11, 0));
 }
-.nav { display: flex; gap: clamp(20px, 3vw, 56px); }
+/* Nav spans the same centered column as the hero, so both share one axis and edges */
+.nav { display: flex; justify-content: space-between; gap: 16px; width: 100%; max-width: var(--content); }
 .nav__link {
   color: var(--text-muted);
   font-weight: 500;
