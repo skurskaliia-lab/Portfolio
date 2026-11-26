@@ -72,12 +72,33 @@
       });
     }, { passive: true });
   }
-  if (!window.gsap || !window.ScrollTrigger || reduce) {
-    // Native horizontal swipe fallback
-    const vp = document.querySelector('.works__viewport');
-    vp.addEventListener('scroll', updateCards, { passive: true });
-    window.addEventListener('resize', updateCards);
-    updateCards();
+  /* Distance the track travels: from the first visible card centred to the last one centred */
+  const distance = () => {
+    const visible = cards.filter(c => !c.hidden);
+    if (!visible.length) return 0;
+    const first = visible[0], last = visible[visible.length - 1];
+    return (last.offsetLeft + last.offsetWidth / 2) - (first.offsetLeft + first.offsetWidth / 2);
+  };
+
+  if (!window.gsap || !window.ScrollTrigger) {
+    // Fallback without GSAP: still vertical scroll -> horizontal movement.
+    // The section sticks to the top while a taller wrapper scrolls past it.
+    document.documentElement.classList.add('is-sticky-works');
+    const wrap = document.createElement('div');
+    wrap.className = 'works-scroller';
+    works.parentNode.insertBefore(wrap, works);
+    wrap.appendChild(works);
+    const layout = () => { wrap.style.height = (works.offsetHeight + distance()) + 'px'; move(); };
+    const move = () => {
+      const d = distance();
+      const p = Math.min(1, Math.max(0, -wrap.getBoundingClientRect().top / Math.max(1, d)));
+      track.style.transform = `translate3d(${-p * d}px,0,0)`;
+      updateCards();
+    };
+    window.addEventListener('scroll', move, { passive: true });
+    window.addEventListener('resize', layout);
+    filters.forEach(b => b.addEventListener('click', () => { layout(); window.scrollTo(0, wrap.offsetTop); }));
+    layout();
     return;
   }
 
@@ -85,7 +106,7 @@
   document.documentElement.classList.add('is-gsap');
 
   /* ---------- Hero: slide up with progressive blur ---------- */
-  gsap.to('.hero__inner', {
+  if (!reduce) gsap.to('.hero__inner', {
     yPercent: -22,
     opacity: 0,
     filter: 'blur(18px)',
@@ -99,13 +120,6 @@
   });
 
   /* ---------- Works: vertical scroll drives horizontal track ---------- */
-  const distance = () => {
-    const visible = cards.filter(c => !c.hidden);
-    if (!visible.length) return 0;
-    const first = visible[0], last = visible[visible.length - 1];
-    return (last.offsetLeft + last.offsetWidth / 2) - (first.offsetLeft + first.offsetWidth / 2);
-  };
-
   gsap.to(track, {
     x: () => -distance(),
     ease: 'none',
@@ -115,9 +129,9 @@
       start: 'top top',
       end: () => '+=' + distance(),
       pin: true,
-      scrub: 0.8,
+      scrub: reduce ? true : 0.8,
       invalidateOnRefresh: true,
-      snap: {
+      snap: reduce ? false : {
         snapTo: v => {
           const n = cards.filter(c => !c.hidden).length - 1;
           return n > 0 ? Math.round(v * n) / n : 0;

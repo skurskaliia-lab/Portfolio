@@ -235,7 +235,9 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   padding: clamp(16px, 3vh, 40px) 0 clamp(24px, 5vh, 56px);
 }
 .works__viewport::-webkit-scrollbar { display: none; }
-.is-gsap .works__viewport { overflow: visible; scroll-snap-type: none; }
+.is-gsap .works__viewport,
+.is-sticky-works .works__viewport { overflow: visible; scroll-snap-type: none; }
+.is-sticky-works .works { position: sticky; top: 0; }
 
 .works__track {
   display: flex;
