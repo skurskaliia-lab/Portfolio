@@ -309,6 +309,7 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   max-width: 1440px;
   margin: 0 auto;
 }
+.services--page { padding-top: calc(var(--nav-h) + clamp(32px, 6vh, 72px)); }
 .services__aside {
   grid-column: 1;
   grid-row: 1;
