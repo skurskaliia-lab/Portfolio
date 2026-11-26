@@ -3,65 +3,123 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Portfolio: design and engineering.">
+  <title>Your Name — Marketing Designer</title>
+  <meta name="description" content="Portfolio of a marketing designer.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Condensed:wght@700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!--
     PLACEHOLDERS: everything marked with data-placeholder should be replaced
-    with your own content (name, photo, text, links).
+    with your own content (name, photo, text, links, works).
   -->
 
   <header class="topbar">
     <nav class="nav" aria-label="Main">
-      <a href="#" class="nav__link is-active" aria-current="page">Home</a>
-      <a href="#" class="nav__link">Designs</a>
-      <a href="#" class="nav__link">Engineering</a>
+      <a href="#top" class="nav__link is-active" aria-current="page">Home</a>
+      <a href="#works" class="nav__link">Works</a>
       <a href="#" class="nav__link">About</a>
       <a href="#" class="nav__link">Contact</a>
     </nav>
   </header>
 
-  <main class="hero">
-    <div class="hero__inner">
-      <!-- PLACEHOLDER: replace with <img src="avatar.jpg" alt="Your Name"> -->
-      <div class="avatar" data-placeholder role="img" aria-label="Photo placeholder">
-        <span>YN</span>
+  <main>
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <!-- PLACEHOLDER: replace with <img src="avatar.jpg" alt="Your Name"> -->
+        <div class="avatar" data-placeholder role="img" aria-label="Photo placeholder">
+          <span>YN</span>
+        </div>
+
+        <h1 class="hero__title">
+          <span class="hero__title-text">Marketing Designer</span><span class="hero__title-line" aria-hidden="true"></span>
+        </h1>
+
+        <div class="hero__bio" data-placeholder>
+          <p>One or two sentences about what you do and who you do it for.</p>
+        </div>
+
+        <p class="hero__status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="hero__status-text">Open to full-time roles, contracts and projects.</span>
+          <a href="#" class="cta">Book a call <span aria-hidden="true">→</span></a>
+        </p>
+
+        <ul class="socials" data-placeholder>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Dribbble</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Behance</a></li>
+          <li><a href="#">Telegram</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="works" id="works" aria-labelledby="works-title">
+      <div class="works__head">
+        <h2 class="works__count" id="works-title"><span class="works__num">07</span> Works</h2>
+        <div class="filters" role="group" aria-label="Filter works">
+          <button type="button" class="filter is-active" data-filter="all">All<sup></sup></button>
+          <button type="button" class="filter" data-filter="brand">Brand<sup></sup></button>
+          <button type="button" class="filter" data-filter="campaign">Campaign<sup></sup></button>
+          <button type="button" class="filter" data-filter="social">Social<sup></sup></button>
+          <button type="button" class="filter" data-filter="motion">Motion<sup></sup></button>
+        </div>
       </div>
 
-      <h1 class="hero__title" data-placeholder>
-        <span class="hero__title-text">Your Profession</span><span class="hero__title-line" aria-hidden="true"></span>
-      </h1>
-
-      <p class="hero__links">
-        <a href="mailto:you@example.com" data-placeholder>email</a>
-        <span aria-hidden="true">x</span>
-        <a href="https://github.com/" data-placeholder>github</a>
-      </p>
-
-      <div class="hero__bio" data-placeholder>
-        <p>One or two sentences about what you do and who you do it for.</p>
-        <p>Previously at <a href="#" class="dotted">Company</a>.</p>
+      <!-- PLACEHOLDER WORKS: replace titles, categories and the .work__art blocks with your images -->
+      <div class="works__viewport">
+        <ol class="works__track" data-placeholder>
+          <li class="work" data-cat="brand">
+            <h3 class="work__title">Project One</h3>
+            <a href="#" class="work__media"><div class="work__art art-1"><span>Brand<br>Identity</span></div></a>
+            <p class="work__meta"><span class="work__idx">01</span><span class="work__cat">Category <b>Brand</b></span></p>
+          </li>
+          <li class="work" data-cat="campaign">
+            <h3 class="work__title">Project Two</h3>
+            <a href="#" class="work__media"><div class="work__art art-2"><span>Launch<br>Campaign</span></div></a>
+            <p class="work__meta"><span class="work__idx">02</span><span class="work__cat">Category <b>Campaign</b></span></p>
+          </li>
+          <li class="work" data-cat="social">
+            <h3 class="work__title">Project Three</h3>
+            <a href="#" class="work__media"><div class="work__art art-3"><span>Social<br>Series</span></div></a>
+            <p class="work__meta"><span class="work__idx">03</span><span class="work__cat">Category <b>Social</b></span></p>
+          </li>
+          <li class="work" data-cat="motion">
+            <h3 class="work__title">Project Four</h3>
+            <a href="#" class="work__media"><div class="work__art art-4"><span>Motion<br>Ads</span></div></a>
+            <p class="work__meta"><span class="work__idx">04</span><span class="work__cat">Category <b>Motion</b></span></p>
+          </li>
+          <li class="work" data-cat="brand">
+            <h3 class="work__title">Project Five</h3>
+            <a href="#" class="work__media"><div class="work__art art-5"><span>Packaging</span></div></a>
+            <p class="work__meta"><span class="work__idx">05</span><span class="work__cat">Category <b>Brand</b></span></p>
+          </li>
+          <li class="work" data-cat="campaign">
+            <h3 class="work__title">Project Six</h3>
+            <a href="#" class="work__media"><div class="work__art art-6"><span>Out of<br>Home</span></div></a>
+            <p class="work__meta"><span class="work__idx">06</span><span class="work__cat">Category <b>Campaign</b></span></p>
+          </li>
+          <li class="work" data-cat="social">
+            <h3 class="work__title">Project Seven</h3>
+            <a href="#" class="work__media"><div class="work__art art-7"><span>Creator<br>Kit</span></div></a>
+            <p class="work__meta"><span class="work__idx">07</span><span class="work__cat">Category <b>Social</b></span></p>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <p class="hero__status">
-        <span class="status-dot" aria-hidden="true"></span>
-        <span class="hero__status-text">Open to full-time roles, contracts and projects.</span>
-        <a href="#" class="cta">Book a call <span aria-hidden="true">→</span></a>
-      </p>
-    </div>
-
-    <ul class="socials" data-placeholder>
-      <li><a href="#">LinkedIn</a></li>
-      <li><a href="#">Dribbble</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Behance</a></li>
-      <li><a href="#">Telegram</a></li>
-    </ul>
   </main>
+
+  <footer class="footer">
+    <p>© 2026 <span data-placeholder>Your Name</span></p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
