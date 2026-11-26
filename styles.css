@@ -317,6 +317,8 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   margin: 0 auto;
 }
 .services__aside {
+  grid-column: 1;
+  grid-row: 1;
   position: sticky;
   top: calc(var(--nav-h) + 24px);
   align-self: start;
@@ -336,6 +338,8 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   color: var(--text-muted);
 }
 .services__list {
+  grid-column: 2;
+  grid-row: 1;
   list-style: none;
   padding: 0;
   display: flex;
@@ -403,6 +407,61 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 }
 .service__go:hover, .service:hover .service__go { color: var(--text); background: var(--surface); }
 
+/* Handwritten note */
+.services { --hand: "Caveat Brush", "Segoe Print", "Bradley Hand", cursive; }
+.note {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  position: sticky;
+  top: calc(var(--nav-h) + 300px);
+  margin-top: clamp(220px, 28vh, 300px);
+  margin-left: clamp(0px, 6vw, 90px);
+  width: max-content;
+  max-width: 100%;
+}
+.note__text {
+  font-family: var(--hand);
+  font-size: clamp(34px, 3.4vw, 46px);
+  line-height: 1.15;
+  color: #9a9a9e;
+  rotate: -3deg;
+}
+.note__line {
+  position: relative;
+  display: block;
+  width: max-content;
+  /* the ink is revealed left-to-right by --p (0..1), set from main.js */
+  clip-path: inset(-20% calc((1 - var(--p, 1)) * 100%) -20% -4%);
+}
+.note__line:nth-child(2) { margin-left: .4em; }
+.note__doodle {
+  display: block;
+  width: 90px;
+  height: 68px;
+  margin: 4px 0 0 40px;
+  fill: none;
+  stroke: #9a9a9e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.note__doodle path { stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--d, 1)); }
+.note__pill {
+  display: inline-flex;
+  margin: 6px 0 0 84px;
+  padding: 8px 16px;
+  border: 1px solid #3a3a3e;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-muted);
+  opacity: var(--o, 1);
+  translate: 0 calc((1 - var(--o, 1)) * 8px);
+  transition: color .2s, border-color .2s;
+}
+.note__pill:hover { color: var(--text); border-color: var(--text-muted); }
+
 /* ---------- Footer ---------- */
 .footer {
   display: flex;
@@ -427,7 +486,9 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 
 @media (max-width: 900px) {
   .services { grid-template-columns: 1fr; gap: 32px; }
+  .services__aside, .services__list { grid-column: 1; grid-row: auto; }
   .services__aside { position: static; }
+  .note { grid-column: 1; grid-row: auto; order: 3; position: static; margin: 24px auto 0; }
 }
 
 /* ---------- Phone ---------- */
