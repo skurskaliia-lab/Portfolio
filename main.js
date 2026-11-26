@@ -55,6 +55,23 @@
   }
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Social pills lean toward the cursor ---------- */
+  const pills = [...document.querySelectorAll('.socials a')];
+  if (!reduce) {
+    const RANGE = 90, PULL = 0.32;
+    window.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      pills.forEach(a => {
+        const r = a.getBoundingClientRect();
+        const dx = e.clientX - (r.left + r.width / 2);
+        const dy = e.clientY - (r.top + r.height / 2);
+        const d = Math.hypot(dx, dy);
+        const k = d < RANGE ? (1 - d / RANGE) * PULL : 0;
+        a.style.translate = `${(dx * k).toFixed(1)}px ${(dy * k).toFixed(1)}px`;
+      });
+    }, { passive: true });
+  }
   if (!window.gsap || !window.ScrollTrigger || reduce) {
     // Native horizontal swipe fallback
     const vp = document.querySelector('.works__viewport');

@@ -159,20 +159,28 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 }
 .socials a:hover { background: var(--surface-hover); color: var(--text); }
 
-/* Floating pills: each one bobs on its own rhythm */
-.socials li {
-  animation: float var(--dur, 3.2s) ease-in-out var(--delay, 0s) infinite alternate;
-  will-change: transform;
+/* Hover: pills lean toward the cursor (main.js) and reveal signal bars */
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  translate: 0 0;
+  transition: background .2s, color .2s, translate .3s cubic-bezier(.2, .8, .2, 1);
 }
-.socials li:nth-child(5n+1) { --dur: 3.0s; --delay: -0.4s; --lift: -7px;  --tilt: -1.6deg; }
-.socials li:nth-child(5n+2) { --dur: 3.6s; --delay: -1.8s; --lift: -10px; --tilt: 1.4deg; }
-.socials li:nth-child(5n+3) { --dur: 2.8s; --delay: -1.1s; --lift: -6px;  --tilt: -1deg; }
-.socials li:nth-child(5n+4) { --dur: 3.4s; --delay: -2.4s; --lift: -9px;  --tilt: 1.8deg; }
-.socials li:nth-child(5n+5) { --dur: 3.1s; --delay: -0.9s; --lift: -8px;  --tilt: -1.3deg; }
-.socials li:hover { animation-play-state: paused; }
-@keyframes float {
-  from { transform: translateY(0) rotate(0deg); }
-  to   { transform: translateY(var(--lift, -8px)) rotate(var(--tilt, 1deg)); }
+.sig {
+  width: 0;
+  height: 11px;
+  margin-left: 0;
+  opacity: 0;
+  overflow: visible;
+  transition: width .25s, margin .25s, opacity .2s;
+}
+.sig rect { fill: currentColor; opacity: .2; transition: opacity .15s; }
+.socials a:hover .sig,
+.socials a:focus-visible .sig { width: 12px; margin-left: 7px; opacity: 1; }
+.socials a:hover .sig rect,
+.socials a:focus-visible .sig rect { opacity: 1; }
+.socials a:hover .sig rect:nth-child(2) { transition-delay: .09s; }
+.socials a:hover .sig rect:nth-child(3) { transition-delay: .18s; }
 }
 
 /* ---------- Works ---------- */
@@ -361,5 +369,5 @@ h1, h2, h3, p, ol, ul { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
-  .socials li { animation: none; }
+  .socials a { translate: 0 0 !important; }
 }
