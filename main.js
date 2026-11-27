@@ -114,8 +114,8 @@
     });
     heroTl
       .fromTo('.hero__inner', { yPercent: 0 }, { yPercent: -22, ease: 'none', duration: 1 }, 0)
-      .fromTo('.hero__inner', { filter: 'blur(0px)' }, { filter: 'blur(18px)', ease: 'power3.in', duration: 0.5 }, 0.45)
-      .fromTo('.hero__inner', { opacity: 1 }, { opacity: 0, ease: 'power2.in', duration: 0.45 }, 0.5);
+      .fromTo('.hero__inner', { filter: 'blur(0px)' }, { filter: 'blur(18px)', ease: 'power2.in', duration: 0.62 }, 0.35)
+      .fromTo('.hero__inner', { opacity: 1 }, { opacity: 0, ease: 'power2.in', duration: 0.55 }, 0.42);
   }
 
   /* ---------- Works: vertical scroll drives horizontal track ---------- */
