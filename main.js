@@ -106,18 +106,17 @@
   document.documentElement.classList.add('is-gsap');
 
   /* ---------- Hero: slide up with progressive blur ---------- */
-  if (!reduce) gsap.to('.hero__inner', {
-    yPercent: -22,
-    opacity: 0,
-    filter: 'blur(18px)',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 0.6,
-    },
-  });
+  // Slide runs over the whole hero; blur and fade stay off for the first half,
+  // then ramp up steeply (power3.in) so the hero stays sharp longer.
+  if (!reduce) {
+    const heroTl = gsap.timeline({
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 },
+    });
+    heroTl
+      .fromTo('.hero__inner', { yPercent: 0 }, { yPercent: -22, ease: 'none', duration: 1 }, 0)
+      .fromTo('.hero__inner', { filter: 'blur(0px)' }, { filter: 'blur(18px)', ease: 'power3.in', duration: 0.5 }, 0.45)
+      .fromTo('.hero__inner', { opacity: 1 }, { opacity: 0, ease: 'power2.in', duration: 0.45 }, 0.5);
+  }
 
   /* ---------- Works: vertical scroll drives horizontal track ---------- */
   gsap.to(track, {
