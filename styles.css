@@ -11,8 +11,8 @@
   --ok: #3ccf6a;
 
   --font-body: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Roboto Condensed", "Arial Narrow", sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: "Roboto", system-ui, sans-serif;
+  --font-mono: "Roboto", system-ui, sans-serif;
 
   --gutter: clamp(16px, 3.2vw, 64px);
   --content: 620px;
