@@ -497,20 +497,16 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   .service { min-height: 240px; padding-right: 28px; padding-bottom: 72px; top: calc(var(--nav-h) + 12px + var(--i) * 14px); }
   .service__desc { font-size: 16px; }
   :root { --nav-h: 72px; --card-w: 80vw; --card-gap: 16px; }
-  .topbar { justify-content: flex-start; padding: 24px 0 18px; }
-  .nav {
-    gap: 22px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 var(--gutter);
-  }
+  .topbar { padding: 24px var(--gutter) 18px; }
+  .nav { overflow-x: auto; scrollbar-width: none; }
   .nav::-webkit-scrollbar { display: none; }
   .nav__link { font-size: 16px; }
   .nav { gap: 18px; }
 
   .hero { padding-bottom: 32px; }
   .avatar { width: 96px; height: 96px; font-size: 32px; }
-  :root { --title-size: clamp(34px, 10vw, 46px); }
+  /* phones: headline (and so the column) fills the width between the gutters */
+  :root { --title-size: min(calc((100vw - 2 * var(--gutter)) / 8.21), 48px); }
     .hero__bio, .hero__status { font-size: 16px; }
   .socials { padding-top: 64px; gap: 8px; }
   .socials a { font-size: 15px; padding: 6px 11px; }
