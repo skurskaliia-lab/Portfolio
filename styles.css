@@ -103,6 +103,7 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   letter-spacing: -0.035em;
 }
 
+.hero__title-text { margin-left: -0.063em; }   /* optical: cancel the M's side bearing so its ink sits on the column edge */
 .hero__bio { margin-top: 24px; max-width: 370px; font-size: 17px; font-weight: 500; line-height: 1.45; color: var(--text-soft); }
 
 .hero__status {
@@ -120,7 +121,7 @@ h1, h2, h3, p, ol, ul { margin: 0; }
   border-radius: 50%;
   background: var(--ok);
   box-shadow: 0 0 0 3px rgba(60, 207, 106, .22);
-  margin: 0 8px 0 2px;
+  margin: 0 8px 0 3px;            /* the 3px glow ring then starts exactly on the column edge */
 }
 .hero__status-text { color: var(--text-muted); }
 .cta {
