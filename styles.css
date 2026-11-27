@@ -616,3 +616,21 @@ a.contact__value:hover { border-color: var(--text); }
   .form__row { grid-template-columns: 1fr; }
   .form { border-radius: 22px; }
 }
+
+/* ---------- Frame: the whole site sits in one rounded dark panel ---------- */
+:root { --frame: 8px; --frame-r: 22px; --frame-color: #e8e8e8; }
+body::after {
+  content: "";
+  position: fixed;
+  inset: var(--frame);
+  border-radius: var(--frame-r);
+  box-shadow: 0 0 0 calc(var(--frame) + 40px) var(--frame-color);
+  pointer-events: none;
+  z-index: 100;
+}
+html { background: var(--frame-color); }
+.topbar { padding-top: calc(36px + var(--frame)); }
+@media (max-width: 640px) {
+  :root { --frame: 5px; --frame-r: 16px; }
+  .topbar { padding-top: calc(24px + var(--frame)); }
+}
