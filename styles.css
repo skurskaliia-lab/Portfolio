@@ -581,3 +581,90 @@ html, body { overscroll-behavior-y: none; }
   :root { --frame: 5px; --frame-r: 16px; }
   .topbar { padding-top: calc(24px + var(--frame)); }
 }
+
+/* ---------- One-screen pages (About, Contact): exactly one viewport on tablet & desktop ---------- */
+.about {
+  min-height: 100svh;
+  padding: calc(var(--nav-h) + clamp(24px, 6vh, 80px)) var(--gutter) clamp(40px, 7vh, 96px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 120px);
+  align-items: center;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.about__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(56px, min(9vw, 15vh), 140px);
+  line-height: .9;
+  letter-spacing: -.035em;
+}
+.about__lead { margin-top: clamp(16px, 3vh, 32px); max-width: 560px; font-size: clamp(19px, min(2vw, 3vh), 26px); line-height: 1.3; font-weight: 500; }
+.about__body { margin-top: clamp(12px, 2.4vh, 28px); max-width: 540px; display: grid; gap: clamp(8px, 1.6vh, 16px); color: var(--text-soft); font-size: clamp(15px, min(1.3vw, 2.1vh), 18px); line-height: 1.5; }
+.about__cta { display: inline-block; margin: clamp(16px, 3.4vh, 40px) 0 0; font-size: clamp(16px, 2.2vh, 18px); }
+.about__side { display: grid; gap: clamp(16px, 3vh, 32px); justify-items: start; }
+.about__photo {
+  width: min(100%, 44vh, 420px);
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.about__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.about__facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2.2vh, 24px) 32px; width: 100%; max-width: 520px; }
+.about__facts dt { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 4px; }
+.about__facts dd { margin: 0; font-size: clamp(15px, 2.1vh, 18px); font-weight: 500; }
+
+/* Contact: everything scales with the screen height so it fits without scrolling */
+.contact__title { font-size: clamp(48px, min(9vw, 13vh), 132px); }
+.contact__lead { margin-top: clamp(12px, 2.6vh, 24px); font-size: clamp(15px, 2.2vh, 18px); }
+.contact__list { margin-top: clamp(20px, 4.5vh, 48px); gap: clamp(10px, 2.4vh, 24px); }
+.contact__value { font-size: clamp(16px, 2.4vh, 20px); }
+.contact__label { margin-bottom: clamp(2px, .6vh, 6px); }
+.form { gap: clamp(10px, 1.9vh, 20px); padding: clamp(20px, min(3.5vw, 4.4vh), 44px); }
+.field { gap: clamp(4px, .8vh, 8px); }
+.field input, .field select, .field textarea { padding: clamp(9px, 1.5vh, 14px) 16px; font-size: clamp(15px, 1.9vh, 16px); }
+.chips legend { margin-bottom: clamp(4px, .8vh, 8px); }
+.chip span { padding: clamp(6px, 1vh, 9px) 16px; }
+.form__submit { height: clamp(42px, 5.6vh, 52px); }
+
+@media (min-width: 901px) and (min-height: 600px), (min-width: 641px) and (max-width: 900px) and (min-height: 700px) {
+  body.is-fit { height: 100vh; height: 100svh; overflow: hidden; }
+  body.is-fit .footer { display: none; }
+  body.is-fit main { height: 100vh; height: 100svh; min-height: 0; }
+
+  /* Contact: columns stretch to the screen; the message box takes the leftover height */
+  .is-fit .contact {
+    padding-top: calc(var(--nav-h) + clamp(12px, 4vh, 56px));
+    padding-bottom: clamp(20px, 5vh, 64px);
+    align-items: stretch;
+  }
+  .is-fit .contact__intro { align-self: center; }
+  .is-fit .form { display: flex; flex-direction: column; min-height: 0; height: 100%; max-height: 720px; align-self: center; }
+  .is-fit .form > .field:has(textarea) { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .is-fit .form textarea { flex: 1; min-height: 56px; resize: none; }
+  .is-fit .form__submit { align-self: flex-start; flex: none; }
+}
+
+/* Tablet portrait: stacked, compressed so it still fits one screen */
+@media (min-width: 641px) and (max-width: 900px) and (min-height: 700px) {
+  .is-fit .contact { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: clamp(16px, 3vh, 32px); }
+  .is-fit .contact__title br { display: none; }
+  .is-fit .contact__title { font-size: clamp(48px, 7vh, 88px); }
+  .is-fit .contact__lead { max-width: 600px; }
+  .is-fit .contact__list { grid-template-columns: repeat(3, auto); justify-content: start; column-gap: clamp(24px, 6vw, 56px); margin-top: clamp(16px, 3vh, 32px); }
+  .is-fit .contact__list li:last-child { grid-column: 1 / -1; }
+  .is-fit .form .field:has(textarea) { min-height: 96px; }
+
+  .about { grid-template-columns: 1fr; align-content: center; gap: clamp(20px, 4vh, 48px); }
+  .about__side { grid-template-columns: auto 1fr; align-items: center; gap: 32px; }
+  .about__photo { width: min(40vw, 30vh); }
+  .about__facts { grid-template-columns: 1fr; }
+}
+
+/* Phones: normal scrolling page */
+@media (max-width: 640px) {
+  .about { grid-template-columns: 1fr; align-items: start; }
+  .about__photo { width: 100%; max-width: 360px; }
+}
