@@ -629,6 +629,9 @@ body::after {
   z-index: 100;
 }
 html { background: var(--frame-color); }
+/* No rubber-band bounce at the page ends: the bounce shifted the page under the
+   pinned works carousel and made it jump when scrolling to the last card. */
+html, body { overscroll-behavior-y: none; }
 .topbar { padding-top: calc(36px + var(--frame)); }
 @media (max-width: 640px) {
   :root { --frame: 5px; --frame-r: 16px; }

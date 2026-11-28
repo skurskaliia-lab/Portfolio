@@ -130,6 +130,7 @@
       start: 'top top',
       end: () => '+=' + distance(),
       pin: true,
+      anticipatePin: 1,
       scrub: reduce ? true : 0.8,
       invalidateOnRefresh: true,
       snap: reduce ? false : {
