@@ -112,9 +112,11 @@
     const heroTl = gsap.timeline({
       scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 },
     });
+    // blur zone starts 5rem (80px) of scroll earlier than the 35% mark, ending at the same point
+    const extra = (5 * parseFloat(getComputedStyle(document.documentElement).fontSize)) / document.querySelector('.hero').offsetHeight;
     heroTl
       .fromTo('.hero__inner', { yPercent: 0 }, { yPercent: -22, ease: 'none', duration: 1 }, 0)
-      .fromTo('.hero__inner', { filter: 'blur(0px)' }, { filter: 'blur(18px)', ease: 'power2.in', duration: 0.62 }, 0.35)
+      .fromTo('.hero__inner', { filter: 'blur(0px)' }, { filter: 'blur(18px)', ease: 'power2.in', duration: 0.62 + extra }, 0.35 - extra)
       .fromTo('.hero__inner', { opacity: 1 }, { opacity: 0, ease: 'power2.in', duration: 0.55 }, 0.42);
   }
 
